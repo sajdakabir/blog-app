@@ -1,11 +1,38 @@
+*{
+  box-sizing: border-box;
+}
 body {
   color: #333;
 }
 img {
   max-width: 100%;
 }
-main {
-  padding: 10px;
-  max-width: 700px;
+
+form.login, form.register{
+  max-width: 400px;
   margin: 0 auto;
+}
+input{
+  display: block;
+  width: 100%;
+  padding: 5px 7px;
+  margin-bottom: 5px;
+  /* border: 2px solid #ddd; */
+  border: none;
+  border-bottom: 1px solid #333;
+  background-color: #fff;
+}
+button{
+  width: 100%;
+  display: block;
+  background-color: #555;
+  border: 0;
+  color: #fff;
+  border-radius: 5px;
+  padding: 7px;
+  margin-top: 7px;
+}
+
+form h1{
+  text-align: center;
 }
