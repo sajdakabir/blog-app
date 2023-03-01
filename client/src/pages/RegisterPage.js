@@ -10,7 +10,6 @@ export default function RegisterPage() {
             headers: {'Content-Type':'application/json'},
         })
     }
-    // console.log(JSON.stringify({username,password}))
     return (
         <form className="register" onSubmit={regster}>
             <h1>Register</h1>
