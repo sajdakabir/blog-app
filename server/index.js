@@ -2,9 +2,10 @@ import expess from 'express';
 import cors from 'cors';
 import connectDB from './db/connect.js';
 import dotenv from 'dotenv';
-import User from './models/User.js'
+import auth from './routers/auth.js';
 
-const app=expess();
+
+const app = expess();
 
 
 app.use(cors());
@@ -13,13 +14,16 @@ dotenv.config();
 
 connectDB();
 
-app.post('/register',async(req,res)=>{
-    const {username,password}=req.body;
-    const userInfo=await User.create({username,password})
-    res.json(userInfo);
-})
-const port=process.env.PORT || 5000; 
 
-app.listen(port,(req,res)=>{
+app.get('/', async (req, res) => {
+    res.status(200).send({
+        message: 'Hello from XharkTank!'
+    })
+});
+
+app.use('/', auth);
+const port = process.env.PORT || 5000;
+
+app.listen(port, (req, res) => {
     console.log(`server running on post ${port}`);
 })
