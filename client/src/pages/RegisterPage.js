@@ -2,8 +2,8 @@ import { useState } from 'react'
 export default function RegisterPage() {
     const [username, setUsername] = useState('');
     const [password,setPassword]=useState('');
-    async function regster(e){
-        e.preventDefault();
+    async function regster(event){
+        event.preventDefault();
        
         const result=await fetch('http://localhost:5000/register',{
             method:'POST',
