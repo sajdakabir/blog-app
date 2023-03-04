@@ -11,7 +11,6 @@ export default function LoginPage() {
             headers: {'Content-Type':'application/json'},
         })
     }
-    console.log(username)
     return (
         <form className="login" onSubmit={login}>
             <h1>LogIn</h1>
