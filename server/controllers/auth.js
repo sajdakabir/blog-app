@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
+
 dotenv.config();
 
 
@@ -45,4 +46,12 @@ export const login = async (req, res) => {
     } catch (error) {
         res.status(400).json(error);
     }
+};
+
+export const getProfile=(req,res)=>{
+    // res.json('hoo');
+    // res.json(req.cookies);
+    res.status(200).send({
+        message: 'Hello from XharkTank!'
+    })
 };
