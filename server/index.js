@@ -8,7 +8,7 @@ import auth from './routers/auth.js';
 const app = expess();
 
 
-app.use(cors());
+app.use(cors({credentials:true,origin:'http://localhost:3000'}));
 app.use(expess.json());
 dotenv.config();
 
