@@ -3,6 +3,7 @@ import cors from 'cors';
 import connectDB from './db/connect.js';
 import dotenv from 'dotenv';
 import auth from './routers/auth.js';
+import cookieParser from "cookie-parser";
 
 
 const app = expess();
@@ -10,6 +11,7 @@ const app = expess();
 
 app.use(cors({credentials:true,origin:'http://localhost:3000'}));
 app.use(expess.json());
+app.use(cookieParser());
 dotenv.config();
 
 connectDB();
