@@ -1,6 +1,6 @@
 ## blog-app
 
-It is a platform where you can post your day to blog and share your learning and experience with others.
+It is a platform where you can post your day to day experience and share your learning with others.
 
 
  ### Tech Stack
