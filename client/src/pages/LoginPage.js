@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {Navigate} from 'react-router-dom';
+import { userContext } from "../context/UserContext";
 
 export default function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [redirect,setRedirect]=useState(false);
+    const{setUserInfo}=useContext(userContext);
     const login= async(event)=>{
         event.preventDefault();
         const result=await fetch('http://localhost:5000/login',{
@@ -14,7 +16,11 @@ export default function LoginPage() {
             credentials:'include', //include the cookie
         });
         if(result.ok){
-            setRedirect(true);
+            result.json().then(userInfo=>{
+                setUserInfo(userInfo);
+                setRedirect(true);
+            })
+            
         }else{
             alert('Wrong credentials!')
         }
