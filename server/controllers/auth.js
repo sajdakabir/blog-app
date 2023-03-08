@@ -9,7 +9,7 @@ dotenv.config();
 
 
 const salt = process.env.SALT;
-const secret=process.env.SECRET;
+const secret = process.env.SECRET;
 
 
 export const register = async (req, res) => {
@@ -29,17 +29,20 @@ export const login = async (req, res) => {
     const { username, password } = req.body;
     try {
         const userInfo = await User.findOne({ username });
-        if(!userInfo){
+        if (!userInfo) {
             res.status(400).json('User not found!.')
         }
-        const passOk=bcrypt.compareSync(password,userInfo.password);
-        if(passOk){
-            jwt.sign({username,id:userInfo._id},secret,{},(err,token)=>{
-                if(err) throw err;
-                res.cookie('token',token).json('looking good');
+        const passOk = bcrypt.compareSync(password, userInfo.password);
+        if (passOk) {
+            jwt.sign({ username, id: userInfo._id }, secret, {}, (err, token) => {
+                if (err) throw err;
+                res.cookie('token', token).json({
+                    id: userInfo._id,
+                    username,
+                });
             });
 
-        }else{
+        } else {
             res.status(400).json('Wrong credentials.')
         }
 
@@ -48,16 +51,16 @@ export const login = async (req, res) => {
     }
 };
 
-export const getProfile=(req,res)=>{
-    const{token}=req.cookies;
-    jwt.verify(token,secret,{},(error,info)=>{
-        if(error) throw error;
+export const getProfile = (req, res) => {
+    const { token } = req.cookies;
+    jwt.verify(token, secret, {}, (error, info) => {
+        if (error) throw error;
         res.json(info);
         // res.json(req.cookies);
     });
-      
+
 };
 
-export const logout=(req,res)=>{
-    res.cookie('token','').json('ok');
+export const logout = (req, res) => {
+    res.cookie('token', '').json('ok');
 }
