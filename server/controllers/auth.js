@@ -53,7 +53,11 @@ export const getProfile=(req,res)=>{
     jwt.verify(token,secret,{},(error,info)=>{
         if(error) throw error;
         res.json(info);
-        res.json(req.cookies);
+        // res.json(req.cookies);
     });
       
 };
+
+export const logout=(req,res)=>{
+    res.cookie('token','').json('ok');
+}

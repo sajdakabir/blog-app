@@ -3,18 +3,28 @@ import './Header.css';
 import { Link } from 'react-router-dom';
 
 function Header() {
-  const [username, setUserName] = useState(null);
+  const [username, setUsername] = useState(null);
 
   useEffect(() => {
     fetch('http://localhost:5000/profile', {
       credentials: 'include',
     }).then(res => {
       res.json().then(user => {
-        setUserName(user.username);
+        setUsername(user.username);
       });
     });
 
   }, []);
+
+  const logout=()=>{
+    fetch('http://localhost:5000/logout',{
+      credentials:'include',
+      method:'POST',
+    });
+    setUsername(null);
+  };
+
+
   return (
     <header>
       <Link to="/" className="logo">MyBlog</Link>
@@ -22,7 +32,7 @@ function Header() {
         {username && (
           <>
           <Link to='/create'>Create new post</Link>
-          <a>Logout</a>
+          <a onClick={logout}>Logout</a>
           </>
         )}
         {!username && (
