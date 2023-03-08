@@ -19,7 +19,7 @@ connectDB();
 
 app.get('/', async (req, res) => {
     res.status(200).send({
-        message: 'Hello from XharkTank!'
+        message: 'Hello from BlogApp!'
     })
 });
 

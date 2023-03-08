@@ -49,9 +49,11 @@ export const login = async (req, res) => {
 };
 
 export const getProfile=(req,res)=>{
-    // res.json('hoo');
-    // res.json(req.cookies);
-    res.status(200).send({
-        message: 'Hello from XharkTank!'
-    })
+    const{token}=req.cookies;
+    jwt.verify(token,secret,{},(error,info)=>{
+        if(error) throw error;
+        res.json(info);
+        res.json(req.cookies);
+    });
+      
 };
