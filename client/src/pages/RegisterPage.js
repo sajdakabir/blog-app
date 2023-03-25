@@ -10,11 +10,11 @@ export default function RegisterPage() {
             body:JSON.stringify({username,password}),
             headers: {'Content-Type':'application/json'},
         })
-        if(result.status!==200){
-            alert("Registation failed.");
+        if(result.status===200){
+            alert("Registation successful.")
         }
         else{
-            alert("Registation successful.")
+            alert("Registation failed.");
         }
     }
     return (

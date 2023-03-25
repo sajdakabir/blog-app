@@ -1,22 +1,26 @@
-import expess from 'express';
+import express from 'express';
 import cors from 'cors';
 import connectDB from './db/connect.js';
 import dotenv from 'dotenv';
 import auth from './routers/auth.js';
 import post from './routers/post.js';
 import cookieParser from "cookie-parser";
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-
-const app = expess();
+const app = express();
 
 
 app.use(cors({credentials:true,origin:'http://localhost:3000'}));
-app.use(expess.json());
+app.use(express.json());
 app.use(cookieParser());
 dotenv.config();
 
 connectDB();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.get('/', async (req, res) => {
     res.status(200).send({

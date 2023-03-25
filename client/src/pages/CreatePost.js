@@ -38,6 +38,7 @@ function CreatePost() {
             method: 'POST',
             // send all the data as a from data
             body:data,
+            credentials:'include',
         });
         if(res.ok){
             setRedirect(true);
