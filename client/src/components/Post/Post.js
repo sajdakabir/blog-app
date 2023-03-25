@@ -1,7 +1,8 @@
 import React from 'react';
 import './Post.css';
+import {format } from 'date-fns';
 
-function Post() {
+function Post({title,summary,cover,content,createdAt}) {
   return (
     <div className="post">
         <div className="image">
@@ -9,13 +10,13 @@ function Post() {
         </div>
 
         <div className="texts">
-          <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+          <h2>{title}</h2>
           <p className="info">
             <a className="author">Sajda Kabir</a>
-            <time>2023-2-20 23:53</time>
+            <time>{format(new Date(createdAt), 'yyyy-MM-dd, HH:mm')}</time>
 
           </p>
-          <p className="summary">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus quaerat eius expedita cum, nobis a velit omnis repellat quas consectetur ut vitae quos.</p>
+          <p className="summary">{summary}</p>
         </div>
       </div>
   )
