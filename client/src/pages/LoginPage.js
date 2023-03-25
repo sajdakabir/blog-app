@@ -11,6 +11,7 @@ export default function LoginPage() {
         event.preventDefault();
         const result=await fetch('http://localhost:5000/login',{
             method:'POST',
+            // send all things as a json
             body:JSON.stringify({username,password}),
             headers: {'Content-Type':'application/json'},
             credentials:'include', //include the cookie
