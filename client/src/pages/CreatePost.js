@@ -21,7 +21,7 @@ const modules = {
 function CreatePost() {
     const [title, setTitle] = useState('');
     const [summary, setSummary] = useState('');
-    const [content, setContent] = useState('');
+    const [content, setContent] = useState(''); 
 
 
     return (

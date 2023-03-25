@@ -31,6 +31,7 @@ button{
   border-radius: 5px;
   padding: 7px;
   margin-top: 7px;
+  cursor: pointer;
 }
 
 form.login h1, form.register h1{
