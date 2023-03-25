@@ -24,3 +24,12 @@ export  const createPost=async(req,res)=>{
     }
 
 };
+
+export const getAllPosts=async(req,res)=>{
+   try {
+    const posts=await Post.find();
+    res.json(posts);
+   } catch (error) {
+    res.status(400).json(error);
+   }
+};
