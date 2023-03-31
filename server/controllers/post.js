@@ -42,12 +42,17 @@ export const createPost = async (req, res) => {
 export const getAllPosts = async (req, res) => {
     try {
         const posts = await Post.find()
-        .populate('author',['username'])
-        .sort({createdAt:-1})
-        .limit(20)
-        ;
+            .populate('author', ['username'])
+            .sort({ createdAt: -1 })
+            .limit(20)
+            ;
         res.json(posts);
     } catch (error) {
         res.status(400).json(error);
     }
+};
+export const getPostById = async (req, res) => {
+    const { id } = req.params;
+    const postDoc = await Post.findById(id).populate('author', ['username']);
+    res.json(postDoc);
 };
