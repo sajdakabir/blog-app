@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import {Navigate} from 'react-router-dom';
 export default function RegisterPage() {
     const [username, setUsername] = useState('');
     const [password,setPassword]=useState('');
+    const [redirect,setRedirect]=useState(false);
     async function regster(event){
         event.preventDefault();
        
@@ -11,11 +13,15 @@ export default function RegisterPage() {
             headers: {'Content-Type':'application/json'},
         })
         if(result.status===200){
-            alert("Registation successful.")
+            // alert("Registation successful.")
+            setRedirect(true);
         }
         else{
             alert("Registation failed.");
         }
+    }
+    if(redirect){
+        return <Navigate to={'/login'} />
     }
     return (
         <form className="register" onSubmit={regster}>
