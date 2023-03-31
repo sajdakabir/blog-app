@@ -8,7 +8,8 @@ import jwt from 'jsonwebtoken';
 dotenv.config();
 
 
-const salt = process.env.SALT;
+// const salt = process.env.SALT;
+const salt = bcrypt.genSaltSync(10);
 const secret = process.env.SECRET;
 
 
@@ -21,6 +22,7 @@ export const register = async (req, res) => {
         });
         res.json(userInfo);
     } catch (error) {
+        console.log(error)
         res.status(400).json(error);
     }
 };
