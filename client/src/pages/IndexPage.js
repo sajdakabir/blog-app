@@ -6,7 +6,7 @@ export default function IndexPage() {
     const [posts,setPosts]=useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/post').then(res => {
+        fetch('https://bolg-app-gnkf.onrender.com/post').then(res => {
             res.json().then(posts => {
                setPosts(posts);
             });

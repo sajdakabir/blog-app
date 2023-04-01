@@ -6,6 +6,7 @@ import auth from './routers/auth.js';
 import post from './routers/post.js';
 import cookieParser from "cookie-parser";
 import path from 'path';
+import bodyParser from 'body-parser';
 import { fileURLToPath } from 'url';
 
 const app = express();
@@ -16,13 +17,12 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 dotenv.config();
-const corsOptions ={
-    origin:'*', 
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200,
-  }
-  
-  app.use(cors(corsOptions)) // Use this after the variable declaration
+
+const corsConfig = {
+    credentials: true,
+    origin: true,
+};
+app.use(cors(corsConfig));
 
 connectDB();
 
