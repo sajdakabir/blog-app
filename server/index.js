@@ -11,10 +11,18 @@ import { fileURLToPath } from 'url';
 const app = express();
 
 
-app.use(cors({credentials:true,origin:'http://localhost:3000'}));
+// app.use(cors({credentials:true,origin:'http://localhost:3000'}));
+
 app.use(express.json());
 app.use(cookieParser());
 dotenv.config();
+const corsOptions ={
+    origin:'*', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200,
+  }
+  
+  app.use(cors(corsOptions)) // Use this after the variable declaration
 
 connectDB();
 
