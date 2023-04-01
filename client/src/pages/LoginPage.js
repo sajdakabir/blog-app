@@ -9,7 +9,7 @@ export default function LoginPage() {
     const{setUserInfo}=useContext(userContext);
     const login= async(event)=>{
         event.preventDefault();
-        const result=await fetch('http://localhost:5000/login',{
+        const result=await fetch('https://bolg-app-gnkf.onrender.com/login',{
             method:'POST',
             // send all things as a json
             body:JSON.stringify({username,password}),

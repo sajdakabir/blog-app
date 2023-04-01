@@ -7,7 +7,7 @@ function Header() {
   const {userInfo,setUserInfo}=useContext(userContext)
 
   useEffect(() => {
-    fetch('http://localhost:5000/profile', {
+    fetch('https://bolg-app-gnkf.onrender.com/profile', {
       credentials: 'include',
     }).then(res => {
       res.json().then(user => {
@@ -18,7 +18,7 @@ function Header() {
   }, []);
 
   const logout=()=>{
-    fetch('http://localhost:5000/logout',{
+    fetch('https://bolg-app-gnkf.onrender.com/logout',{
       credentials:'include',
       method:'POST',
     });

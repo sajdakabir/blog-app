@@ -34,7 +34,7 @@ function CreatePost() {
         data.set('file',files[0]);
 
         e.preventDefault();
-        const res=await fetch('http://localhost:5000/post', {
+        const res=await fetch('https://bolg-app-gnkf.onrender.com/post', {
             method: 'POST',
             // send all the data as a from data
             body:data,

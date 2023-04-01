@@ -7,7 +7,7 @@ export default function RegisterPage() {
     async function regster(event){
         event.preventDefault();
        
-        const result=await fetch('http://localhost:5000/register',{
+        const result=await fetch('https://bolg-app-gnkf.onrender.com/register',{
             method:'POST',
             body:JSON.stringify({username,password}),
             headers: {'Content-Type':'application/json'},
